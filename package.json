@@ -1,0 +1,26 @@
+{
+  "name": "aconcagua",
+  "version": "1.0.0",
+  "description": "Measure and Units model for Javascript",
+  "main": "aconcagua.js",
+  "scripts": {
+    "test": "node tests.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/10Pines/aconcagua-js.git"
+  },
+  "keywords": [
+    "measures",
+    "units"
+  ],
+  "author": "Nahuel Garbezza <nahuel@10pines.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/10Pines/aconcagua-js/issues"
+  },
+  "homepage": "https://github.com/10Pines/aconcagua-js#readme",
+  "devDependencies": {
+    "@pmoo/testy": "^2.3.1"
+  }
+}
