@@ -5,6 +5,7 @@ class BaseUnit {
   
   nameForOne() { return this._name };
   nameForMany() { return `${this._name}s` }
+  with(amount) { return new SimpleMeasure(amount, this) }
 }
 
 class SimpleMeasure {
@@ -13,10 +14,15 @@ class SimpleMeasure {
     this._unit = unit;
   }
   
-  unitName() { return this._unit.nameForOne(); }
-  negated() { return new SimpleMeasure(this._amount * -1, this._unit) }
-  isNegative() { return this._amount < 0 }
+  amount() { return this._amount }
+  unit() { return this._unit }
+  unitName() { return this.unit().nameForOne(); }
+  negated() { return new SimpleMeasure(this.amount() * -1, this.unit()) }
+  isNegative() { return this.amount() < 0 }
   isPositive() { return !this.isNegative() }
+  plus(measure) {
+    return new SimpleMeasure(this.amount() + measure.amount(), this.unit())
+  }
 }
 
 module.exports = {
