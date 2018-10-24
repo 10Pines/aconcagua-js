@@ -14,8 +14,9 @@ class SimpleMeasure {
   }
   
   unitName() { return this._unit.nameForOne(); }
-  
   negated() { return new SimpleMeasure(this._amount * -1, this._unit) }
+  isNegative() { return this._amount < 0 }
+  isPositive() { return !this.isNegative() }
 }
 
 module.exports = {

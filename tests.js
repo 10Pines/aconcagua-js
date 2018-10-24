@@ -1,5 +1,5 @@
 const { BaseUnit, SimpleMeasure } = require('./aconcagua');
-const { suite, test, assertEquals } = require('@pmoo/testy');
+const { suite, test, assertEquals, assertTrue, assertFalse } = require('@pmoo/testy');
 
 let
   dollar = new BaseUnit('dollar'),
@@ -18,5 +18,17 @@ suite('Simple Measures', () => {
   
   test('negation', () => {
     assertEquals(tenDollars.negated(), minusTenDollars);
+    assertEquals(zeroDollars.negated(), zeroDollars);
+  });
+  
+  test('negative check', () => {
+    assertTrue(minusTenDollars.isNegative());
+    assertFalse(oneDollar.isNegative());
+  });
+  
+  test('positive check', () => {
+    assertFalse(minusTenDollars.isPositive());
+    assertTrue(oneDollar.isPositive());
+    assertTrue(zeroDollars.isPositive());
   });
 });
