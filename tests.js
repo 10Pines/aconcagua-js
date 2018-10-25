@@ -58,7 +58,25 @@ suite('Simple Measures', () => {
     assertUnitsAreEqual(tenDollars.plus(zeroDollars.plus(oneDollar)), tenDollars.plus(zeroDollars).plus(oneDollar))
   );
   
-  test('addition - zero', () =>
+  test('addition - number zero', () =>
     assertUnitsAreEqual(tenDollars.plus(0), tenDollars)
+  );
+  
+  test('substraction - values', () => {
+    assertUnitsAreEqual(elevenDollars.minus(oneDollar), tenDollars);
+    assertEquals(elevenDollars.minus(oneDollar).amount(), 10);
+    assertEquals(tenDollars.minus(oneDollar).unit(), dollar);
+  });
+  
+  test('substraction - neutral', () =>
+    assertUnitsAreEqual(tenDollars.minus(zeroDollars), tenDollars)
+  );
+  
+  test('substraction - associativity', () =>
+    assertUnitsAreEqual(elevenDollars.minus(oneDollar.minus(zeroDollars)), elevenDollars.minus(oneDollar).minus(zeroDollars))
+  );
+  
+  test('substraction - number zero', () =>
+    assertUnitsAreEqual(tenDollars.minus(0), tenDollars)
   );
 });
