@@ -1,3 +1,7 @@
+class Unit {
+  static equals(unitOne, unitTwo) { return unitOne.equals(unitTwo) }
+}
+
 class BaseUnit {
   constructor(name) { this._name = name; }
   
@@ -5,8 +9,15 @@ class BaseUnit {
   nameForOne() { return this.name() };
   nameForMany() { return `${this.name()}s` }
   with(amount) { return new SimpleMeasure(amount, this) }
+  baseUnit() { return this }
+  convertAmountToBaseUnit(amount) { return amount }
+  convertToBaseUnit(measure) { return measure }
   
   equals(unit) { return this.name() === unit.name() }
+}
+
+class Measure {
+  static equals(measureOne, measureTwo) { return measureOne.equals(measureTwo) }
 }
 
 class SimpleMeasure {
@@ -37,11 +48,8 @@ class SimpleMeasure {
   }
 }
 
-class Measure {
-  static equals(measureOne, measureTwo) { return measureOne.equals(measureTwo) }
-}
-
 module.exports = {
+  Unit: Unit,
   BaseUnit: BaseUnit,
   Measure: Measure,
   SimpleMeasure: SimpleMeasure,
