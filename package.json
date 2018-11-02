@@ -21,7 +21,6 @@
   },
   "homepage": "https://github.com/10Pines/aconcagua-js#readme",
   "devDependencies": {
-    "@pmoo/testy": "^2.5.1",
-    "require-dir": "^1.1.0"
+    "@pmoo/testy": "^2.6.1"
   }
 }

@@ -1,1 +1,3 @@
-require('require-dir')('./tests');
+const { runTesty } = require('@pmoo/testy');
+
+runTesty({ directory: require('path').resolve('./tests') });
