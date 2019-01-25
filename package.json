@@ -4,7 +4,7 @@
   "description": "Measure and Units model for Javascript",
   "main": "aconcagua.js",
   "scripts": {
-    "test": "node tests.js"
+    "test": "node $NODE_DEBUG_OPTION tests.js"
   },
   "repository": {
     "type": "git",
@@ -21,6 +21,6 @@
   },
   "homepage": "https://github.com/10Pines/aconcagua-js#readme",
   "devDependencies": {
-    "@pmoo/testy": "^2.9.1"
+    "@pmoo/testy": "^3.0.0"
   }
 }

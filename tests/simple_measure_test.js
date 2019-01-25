@@ -1,9 +1,11 @@
+'use strict';
+
 const { BaseUnit, Measure, SimpleMeasure } = require('../aconcagua');
-const { suite, test, assertEquals, assertTrue, assertFalse } = require('@pmoo/testy');
+const { suite, test, assert } = require('@pmoo/testy');
 
-let assertMeasuresAreEqual = (actual, expected) => assertEquals(actual, expected, Measure.equals);
+const assertMeasuresAreEqual = (actual, expected) => assert.areEqual(actual, expected, Measure.equals);
 
-let
+const
   dollar = new BaseUnit('dollar'),
   zeroDollars = new SimpleMeasure(0, dollar),
   oneDollar = new SimpleMeasure(1, dollar),
@@ -13,10 +15,10 @@ let
 
 suite('Simple Measures', () => {
   test('unit names', () => {
-    assertEquals(oneDollar.unitName(), dollar.nameForOne());
-    assertEquals(tenDollars.unitName(), dollar.nameForMany());
-    assertEquals(zeroDollars.unitName(), dollar.nameForMany());
-    assertEquals(oneDollar.negated().unitName(), dollar.nameForOne());
+    assert.areEqual(oneDollar.unitName(), dollar.nameForOne());
+    assert.areEqual(tenDollars.unitName(), dollar.nameForMany());
+    assert.areEqual(zeroDollars.unitName(), dollar.nameForMany());
+    assert.areEqual(oneDollar.negated().unitName(), dollar.nameForOne());
   });
   
   test('negation', () => {
@@ -26,14 +28,14 @@ suite('Simple Measures', () => {
   });
   
   test('negative check', () => {
-    assertTrue(minusTenDollars.isNegative());
-    assertFalse(oneDollar.isNegative());
+    assert.isTrue(minusTenDollars.isNegative());
+    assert.isFalse(oneDollar.isNegative());
   });
   
   test('positive check', () => {
-    assertFalse(minusTenDollars.isPositive());
-    assertTrue(oneDollar.isPositive());
-    assertTrue(zeroDollars.isPositive());
+    assert.isFalse(minusTenDollars.isPositive());
+    assert.isTrue(oneDollar.isPositive());
+    assert.isTrue(zeroDollars.isPositive());
   });
   
   test('"with" message', () =>
@@ -42,8 +44,8 @@ suite('Simple Measures', () => {
   
   test('addition - values', () => {
     assertMeasuresAreEqual(tenDollars.plus(oneDollar), elevenDollars);
-    assertEquals(tenDollars.plus(oneDollar).amount(), 11);
-    assertEquals(tenDollars.plus(oneDollar).unit(), dollar);
+    assert.areEqual(tenDollars.plus(oneDollar).amount(), 11);
+    assert.areEqual(tenDollars.plus(oneDollar).unit(), dollar);
   });
   
   test('addition - neutral', () =>
@@ -64,8 +66,8 @@ suite('Simple Measures', () => {
   
   test('substraction - values', () => {
     assertMeasuresAreEqual(elevenDollars.minus(oneDollar), tenDollars);
-    assertEquals(elevenDollars.minus(oneDollar).amount(), 10);
-    assertEquals(tenDollars.minus(oneDollar).unit(), dollar);
+    assert.areEqual(elevenDollars.minus(oneDollar).amount(), 10);
+    assert.areEqual(tenDollars.minus(oneDollar).unit(), dollar);
   });
   
   test('substraction - neutral', () =>

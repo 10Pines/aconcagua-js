@@ -1,3 +1,5 @@
+'use strict';
+
 class Unit {
   static equals(unitOne, unitTwo) { return unitOne.equals(unitTwo) }
 }
@@ -17,17 +19,17 @@ class BaseUnit extends Unit {
     return Math.abs(amount) === 1 ? this.nameForOne() : this.nameForMany();
   }
   
-  with(amount) { return new SimpleMeasure(amount, this) }
-  baseUnit() { return this }
-  convertAmountToBaseUnit(amount) { return amount }
-  convertToBaseUnit(measure) { return measure }
-  denominator() { return NullUnit }
+  with(amount) { return new SimpleMeasure(amount, this); }
+  baseUnit() { return this; }
+  convertAmountToBaseUnit(amount) { return amount; }
+  convertToBaseUnit(measure) { return measure; }
+  denominator() { return NullUnit; }
   
-  equals(unit) { return this.name() === unit.name() }
+  equals(unit) { return this.name() === unit.name(); }
 }
 
 class Measure {
-  static equals(measureOne, measureTwo) { return measureOne.equals(measureTwo) }
+  static equals(measureOne, measureTwo) { return measureOne.equals(measureTwo); }
 }
 
 class SimpleMeasure extends Measure {
@@ -37,25 +39,25 @@ class SimpleMeasure extends Measure {
     this._unit = unit;
   }
   
-  amount() { return this._amount }
-  unit() { return this._unit }
+  amount() { return this._amount; }
+  unit() { return this._unit; }
   unitName() { return this.unit().nameForOne(); }
-  negated() { return new SimpleMeasure(this.amount() * -1, this.unit()) }
-  isNegative() { return this.amount() < 0 }
-  isPositive() { return !this.isNegative() }
+  negated() { return new SimpleMeasure(this.amount() * -1, this.unit()); }
+  isNegative() { return this.amount() < 0; }
+  isPositive() { return !this.isNegative(); }
   
   equals(measure) {
-    return this.amount() === measure.amount() && this.unit().equals(measure.unit())
+    return this.amount() === measure.amount() && this.unit().equals(measure.unit());
   }
   
   plus(measure) {
     if (measure === 0) return this;
-    return new SimpleMeasure(this.amount() + measure.amount(), this.unit())
+    return new SimpleMeasure(this.amount() + measure.amount(), this.unit());
   }
   
   minus(measure) {
     if (measure === 0) return this;
-    return new SimpleMeasure(this.amount() - measure.amount(), this.unit())
+    return new SimpleMeasure(this.amount() - measure.amount(), this.unit());
   }
 }
 
