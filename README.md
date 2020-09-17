@@ -1,5 +1,5 @@
 # Aconcagua
-Measure and Units model for Javascript
+Measure and Units model for Javascript. Work in progress.
 
 ## Examples
 

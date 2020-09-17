@@ -4,7 +4,8 @@
   "description": "Measure and Units model for Javascript",
   "main": "aconcagua.js",
   "scripts": {
-    "test": "node $NODE_DEBUG_OPTION tests.js"
+    "test": "npx testy",
+    "lint": "npx eslint"
   },
   "repository": {
     "type": "git",
@@ -21,6 +22,7 @@
   },
   "homepage": "https://github.com/10Pines/aconcagua-js#readme",
   "devDependencies": {
-    "@pmoo/testy": "^3.0.0"
+    "@pmoo/testy": "^5.0.1",
+    "eslint": "^7.9.0"
   }
 }

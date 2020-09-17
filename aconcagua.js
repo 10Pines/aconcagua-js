@@ -1,7 +1,6 @@
 'use strict';
 
 class Unit {
-  static equals(unitOne, unitTwo) { return unitOne.equals(unitTwo) }
 }
 
 const NullUnit = {};
@@ -12,24 +11,48 @@ class BaseUnit extends Unit {
     this._nameForOne = nameForOne;
   }
   
-  name() { return this._nameForOne }
-  nameForOne() { return this.name() };
-  nameForMany() { return `${this.name()}s` }
+  name() {
+    return this.nameForOne();
+  }
+
+  nameForOne() {
+    return this._nameForOne;
+  }
+
+  nameForMany() {
+    return `${this.nameForOne()}s`;
+  }
+
   nameFor(amount) {
     return Math.abs(amount) === 1 ? this.nameForOne() : this.nameForMany();
   }
   
-  with(amount) { return new SimpleMeasure(amount, this); }
-  baseUnit() { return this; }
-  convertAmountToBaseUnit(amount) { return amount; }
-  convertToBaseUnit(measure) { return measure; }
-  denominator() { return NullUnit; }
+  with(amount) {
+    return new SimpleMeasure(amount, this);
+  }
+
+  baseUnit() {
+    return this;
+  }
+
+  convertAmountToBaseUnit(amount) {
+    return amount;
+  }
+
+  convertToBaseUnit(measure) {
+    return measure;
+  }
+
+  denominator() {
+    return NullUnit;
+  }
   
-  equals(unit) { return this.name() === unit.name(); }
+  equals(unit) {
+    return this.name() === unit.name();
+  }
 }
 
 class Measure {
-  static equals(measureOne, measureTwo) { return measureOne.equals(measureTwo); }
 }
 
 class SimpleMeasure extends Measure {
@@ -39,12 +62,29 @@ class SimpleMeasure extends Measure {
     this._unit = unit;
   }
   
-  amount() { return this._amount; }
-  unit() { return this._unit; }
-  unitName() { return this.unit().nameForOne(); }
-  negated() { return new SimpleMeasure(this.amount() * -1, this.unit()); }
-  isNegative() { return this.amount() < 0; }
-  isPositive() { return !this.isNegative(); }
+  amount() {
+    return this._amount;
+  }
+
+  unit() {
+    return this._unit;
+  }
+
+  unitName() {
+    return this.unit().nameFor(this.amount());
+  }
+
+  negated() {
+    return new SimpleMeasure(this.amount() * -1, this.unit());
+  }
+
+  isNegative() {
+    return this.amount() < 0;
+  }
+
+  isPositive() {
+    return !this.isNegative();
+  }
   
   equals(measure) {
     return this.amount() === measure.amount() && this.unit().equals(measure.unit());
@@ -62,9 +102,9 @@ class SimpleMeasure extends Measure {
 }
 
 module.exports = {
-  Unit: Unit,
-  NullUnit: NullUnit,
-  BaseUnit: BaseUnit,
-  Measure: Measure,
-  SimpleMeasure: SimpleMeasure,
+  Unit,
+  NullUnit,
+  BaseUnit,
+  Measure,
+  SimpleMeasure,
 };
