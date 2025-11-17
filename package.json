@@ -24,7 +24,7 @@
   "homepage": "https://github.com/10Pines/aconcagua-js#readme",
   "devDependencies": {
     "@pmoo/testy": "^6.0.0",
-    "eslint": "^7.9.0",
+    "eslint": "^9.39.1",
     "eslint-config-ngarbezza": "^0.0.1"
   }
 }
